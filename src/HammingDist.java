@@ -32,29 +32,34 @@ public class HammingDist extends JFrame{
 	private JPanel panel1;
 	
 	private JButton showStation = new JButton("Show Station");		//Button to show different stations with matching hamming distance
-	private JTextArea intext = new JTextArea(24,12);
-	private JScrollPane showStationScroll = new JScrollPane(intext);
-	private JButton calcHD = new JButton("Calculate HD");
-	private JButton addStat = new JButton("Add Station");
-	private JSlider enterHam = new JSlider(1,4);
-	private JLabel hamVal = new JLabel();
-	private JTextField addStationShow = new JTextField(10);
-	private JComboBox<String> comparedList;
-	private JLabel dist0 = new JLabel("Distance 0");
+	private JTextArea intext = new JTextArea(24,12);				//Text area inside showstation scrollpane
+	private JScrollPane showStationScroll = new JScrollPane(intext);//holds a text area and displays the stations at a given hamming distance
+	private JButton calcHD = new JButton("Calculate HD");			//button to calculate hamming distance of a word at a given time compared to the rest of the combobox
+	private JButton addStat = new JButton("Add Station");			//button that adds a word to the jcombobox list of words
+	
+	private JSlider enterHam = new JSlider(1,4);					//slider that changes which hamming distance value words are displayed
+	private JLabel hamVal = new JLabel();							//label for text box that displays first hamming distance value
+	private JTextField addStationShow = new JTextField(10);			//field that holds the word typed in by user to add to the combobox
+	private JComboBox<String> comparedList;							//combobox which holds the list of words to be compared to each other
+	
+	private JLabel dist0 = new JLabel("Distance 0");				
 	private JLabel dist1 = new JLabel("Distance 1");
 	private JLabel dist2 = new JLabel("Distance 2");
 	private JLabel dist3 = new JLabel("Distance 3");
 	private JLabel dist4 = new JLabel("Distance 4");
-	private JLabel sliderVal = new JLabel("Enter Hamming Dist:");
+	
+	private JLabel sliderVal = new JLabel("Enter Hamming Dist:");	//contains label for slider value
 	private JLabel compareLabel = new JLabel("Compare with");
+	
 	private JLabel dist0Show = new JLabel();
 	private JLabel dist1Show = new JLabel();
 	private JLabel dist2Show = new JLabel();
 	private JLabel dist3Show = new JLabel();
 	private JLabel dist4Show = new JLabel();
+
 	private Color only = new Color(50,150,230);
-	private BufferedImage image;
-	private JLabel picture;
+	private BufferedImage image;									//variable for image to import
+	private JLabel picture;											//variable to import image above into a panel
 	
 	
 	
@@ -138,7 +143,7 @@ public class HammingDist extends JFrame{
 	});
 	}
 	
-	
+	//this method sets the action listeners upon clicking each of the three buttons
 	private void setButtons() {
 		showStation.setBounds(17,100,115,25);
 		calcHD.setBounds(17, 450, 115, 25);
@@ -256,7 +261,7 @@ public class HammingDist extends JFrame{
 		 });
 	}
 	
-	
+	//this method reads in the txt file into a combobox/ dropdown
 	private void setCB() throws IOException{
 	BufferedReader br = new BufferedReader(new FileReader("Mesonet.txt"));
 	
@@ -281,6 +286,7 @@ public class HammingDist extends JFrame{
 	comparedList.setBounds(145,410,70,20);
 	}
 	
+	//this method sets the dimensions of the frame/ window
 	private void setFrame() {
 	setTitle("Hamming Distance");
 	setSize(900,1080);
@@ -289,6 +295,7 @@ public class HammingDist extends JFrame{
 	setVisible(true);
 	
 	}
+	//this method inserts a picture into the freezone
 	private void setPicture() throws IOException 
 	{
 		image = ImageIO.read(new File("FortDab.png"));
